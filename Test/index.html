@@ -12,9 +12,14 @@
     }
     </script>
     <script async="async" src="//platform.getbring.com/widgets/import.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
-        body { font-family: Arial, sans-serif; }
+        body { font-family: 'Open Sans', sans-serif; }
         h1, h2, h3 { color: #333; }
+        h2, h3 {
+            font-family: 'Montserrat', sans-serif; /* Titres en Montserrat */
+            font-weight: bold; /* Titres en gras */
+        }
         .container {
             display: flex;
             justify-content: space-between;
@@ -29,6 +34,10 @@
         ul {
             list-style-type: disc; /* Type de liste */
             padding-left: 20px; /* Décalage de la liste */
+            font-size: 16px; /* Taille de la police pour les ingrédients */
+        }
+        .instructions {
+            font-size: 16px; /* Taille de la police pour les instructions */
         }
     </style>
 </head>
@@ -41,7 +50,7 @@
                 <li>2 magrets de canard</li><li>1 pincée de piment d'espellette</li><li>4 cuil. à soupes de miel de montagne</li><li>0.25 citron jaune</li><li>20 cl. de fond de veau</li><li>Poivre noir</li><li>40 g. de beurre doux</li><li>Sel fin</li><li>4 cuil. à soupes de vinaigre de vin rouge</li> <!-- Affiche les ingrédients des préparations -->
             </ul>
             <!-- Ajouter le code Bring! ici -->
-            <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" data-bring-requested-quantity="6" style="display:none">
+            <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none">
                 <a href="https://www.getbring.com">Bring! Einkaufsliste App für iPhone und Android</a>
             </div>
         </div>
@@ -49,13 +58,13 @@
             <h2>Préparations</h2>
             
                 <h3>Préparation des magrets</h3>
-                <p>      1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br><br>      2. Parer les 2 magrets de canard en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br><br>      3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br><br>      4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br><br>      5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).</p>
+                <p class="instructions">      1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br><br>      2. Parer les 2 magrets de canard en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br><br>      3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br><br>      4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br><br>      5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).</p>
             
                 <h3>Sauce au miel & thym</h3>
-                <p>      1. Ajouter 4 cuil. à soupes de miel de montagne dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer 4 cuil. à soupes de vinaigre de vin rouge et laisser réduire.<br><br>      2. Quand le mélange a bien réduit et devient sirupeux, ajouter 20 cl. de fond de veau et assaisonner de 1 pincée de piment d'espellette, de Sel fin et de Poivre noir à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br><br>      3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter 40 g. de beurre doux froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de 0.25 citron jaune.</p>
+                <p class="instructions">      1. Ajouter 4 cuil. à soupes de miel de montagne dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer 4 cuil. à soupes de vinaigre de vin rouge et laisser réduire.<br><br>      2. Quand le mélange a bien réduit et devient sirupeux, ajouter 20 cl. de fond de veau et assaisonner de 1 pincée de piment d'espellette, de Sel fin et de Poivre noir à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br><br>      3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter 40 g. de beurre doux froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de 0.25 citron jaune.</p>
             
                 <h3>Cuisson à coeur des magrets</h3>
-                <p>      2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br><br>      3. Trancher et servir immédiatement les magret de canard.</p>
+                <p class="instructions">      2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br><br>      3. Trancher et servir immédiatement les magret de canard.</p>
             
         </div>
     </div>
