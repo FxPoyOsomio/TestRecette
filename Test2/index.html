@@ -61,20 +61,22 @@
     <div class="container">
         <div class="ingredients">
             <h2>Ingrédients</h2>
-            <div class="portion-control">
-                <h4>Portions</h4>
-                <div class="button-container">
-                    <button onclick="updatePortions(-1)">-</button>
-                    <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
-                    <button onclick="updatePortions(1)">+</button>
+            <div>
+                <div class="portion-control">
+                    <h4>Portions</h4>
+                    <div class="button-container">
+                        <button onclick="updatePortions(-1)">-</button>
+                        <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
+                        <button onclick="updatePortions(1)">+</button>
+                    </div>
+                </div>
+                <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
+                    <a href="https://www.getbring.com">Bring! Einkaufsliste App für iPhone und Android</a>
                 </div>
             </div>
             <ul>
                 <li>2 magrets de canard</li><li>1 pincée de piment d'espellette</li><li>4 cuil. à soupes de miel de montagne</li><li>0.25 citron jaune</li><li>20 cl. de fond de veau</li><li>Poivre noir</li><li>40 g. de beurre doux</li><li>Sel fin</li><li>4 cuil. à soupes de vinaigre de vin rouge</li> <!-- Affiche les ingrédients des préparations -->
             </ul>
-            <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
-                <a href="https://www.getbring.com">Bring! Einkaufsliste App für iPhone und Android</a>
-            </div>
         </div>
         <div class="preparations">
             <h2>Préparations</h2>
