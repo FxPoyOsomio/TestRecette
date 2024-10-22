@@ -89,6 +89,10 @@
             align-items: center;
             margin-top: 20px;
         }
+        .highlight-quantity {
+            color: #CB6863;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -110,26 +114,25 @@
             </div>
             <ul id="ingredient-list">
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">2</span>  magrets de canard</li>
+                    <li><span class="highlight-quantity">2</span>  magrets de canard</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">1</span> pincée  de piment d'espellette</li>
+                    <li><span class="highlight-quantity">1</span> pincée  de piment d'espellette</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">4</span> cuil. à soupe  de miel de montagne</li>
+                    <li><span class="highlight-quantity">4</span> cuil. à soupe  de miel de montagne</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">0.25</span>  citron jaune</li>
+                    <li><span class="highlight-quantity">0.25</span>  citron jaune</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">20</span> cl.  de fond de veau</li>
+                    <li><span class="highlight-quantity">20</span> cl.  de fond de veau</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">null</span>  Poivre noir</li>
+                    <li><span class="highlight-quantity">null</span>  Poivre noir</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">40</span> g.  de beurre doux</li>
+                    <li><span class="highlight-quantity">40</span> g.  de beurre doux</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">null</span>  Sel fin</li>
+                    <li><span class="highlight-quantity">null</span>  Sel fin</li>
                 
-                    <li><span style="color: #CB6863; font-weight: bold;">4</span> cuil. à soupe  de vinaigre de vin rouge</li>
+                    <li><span class="highlight-quantity">4</span> cuil. à soupe  de vinaigre de vin rouge</li>
                 
             </ul>
-
         </div>
         <div class="preparations">
             <h1 style="text-align: center; font-weight: bold;">Magret de canard (sauce au miel et thym)</h1>
@@ -168,9 +171,8 @@
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
                     let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
-                    ingredientList.innerHTML += `<li><span style="color: #CB6863; font-weight: bold;">${newQuantite}</span> ${ingredient.unite} ${ingredient.nom}</li>`; // Utiliser les backticks ici
+                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite}</span> ${ingredient.unite} ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
-
             }
         }
     </script>
