@@ -26,6 +26,8 @@
             width: 30%;
             background-color: #FCFCFC;
             padding: 0 35px;
+            display: flex;
+            justify-content: space-between;
         }
         .preparations {
             width: 70%;
@@ -55,25 +57,31 @@
             padding: 10px;
             margin: 0 10px;
         }
+        .sub-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 45%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="ingredients">
-            <h2>Ingrédients</h2>
-            <div class="portion-control">
-                <h4>Portions</h4>
-                <div class="button-container">
-                    <button onclick="updatePortions(-1)">-</button>
-                    <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
-                    <button onclick="updatePortions(1)">+</button>
+            <div class="sub-column">
+                <div class="portion-control">
+                    <h4>Portions</h4>
+                    <div class="button-container">
+                        <button onclick="updatePortions(-1)">-</button>
+                        <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
+                        <button onclick="updatePortions(1)">+</button>
+                    </div>
                 </div>
             </div>
-            <ul>
-                <li>2 magrets de canard</li><li>1 pincée de piment d'espellette</li><li>4 cuil. à soupes de miel de montagne</li><li>0.25 citron jaune</li><li>20 cl. de fond de veau</li><li>Poivre noir</li><li>40 g. de beurre doux</li><li>Sel fin</li><li>4 cuil. à soupes de vinaigre de vin rouge</li>
-            </ul>
-            <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
-                <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
+            <div class="sub-column">
+                <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
+                    <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
+                </div>
             </div>
         </div>
         <div class="preparations">
