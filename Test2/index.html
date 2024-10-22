@@ -109,7 +109,43 @@
                 </div>
             </div>
             <ul>
-                <li data-original-quantity="2">2  magrets de canard</li><li data-original-quantity="1">1 pincée  de piment d'espellette</li><li data-original-quantity="4">4 cuil. à soupe  de miel de montagne</li><li data-original-quantity="0.25">0.25  citron jaune</li><li data-original-quantity="20">20 cl.  de fond de veau</li><li data-original-quantity="null">null  Poivre noir</li><li data-original-quantity="40">40 g.  de beurre doux</li><li data-original-quantity="null">null  Sel fin</li><li data-original-quantity="4">4 cuil. à soupe  de vinaigre de vin rouge</li>
+                
+                    <li data-original-quantity="2">
+                        2  magrets de canard
+                    </li>
+                
+                    <li data-original-quantity="1">
+                        1 pincée  de piment d'espellette
+                    </li>
+                
+                    <li data-original-quantity="4">
+                        4 cuil. à soupe  de miel de montagne
+                    </li>
+                
+                    <li data-original-quantity="0.25">
+                        0.25  citron jaune
+                    </li>
+                
+                    <li data-original-quantity="20">
+                        20 cl.  de fond de veau
+                    </li>
+                
+                    <li data-original-quantity="null">
+                        null  Poivre noir
+                    </li>
+                
+                    <li data-original-quantity="40">
+                        40 g.  de beurre doux
+                    </li>
+                
+                    <li data-original-quantity="null">
+                        null  Sel fin
+                    </li>
+                
+                    <li data-original-quantity="4">
+                        4 cuil. à soupe  de vinaigre de vin rouge
+                    </li>
+                
             </ul>
         </div>
         <div class="preparations">
@@ -129,36 +165,35 @@
     </div>
 
     <script>
-        // Fonction pour mettre à jour les portions
-function updatePortions(delta) {
-    const input = document.getElementById("portion-input");
-    let currentValue = parseInt(input.value, 10);
-    if (currentValue + delta > 0) { 
-        input.value = currentValue + delta;
+        function updatePortions(delta) {
+            const input = document.getElementById("portion-input");
+            let currentValue = parseInt(input.value, 10);
+            if (currentValue + delta > 0) { 
+                input.value = currentValue + delta;
 
-        // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
-        const bringImportContainer = document.getElementById("bring-import-container");
-        bringImportContainer.dataset.bringBaseQuantity = input.value;
-        bringImportContainer.dataset.bringRequestedQuantity = input.value;
+                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
+                const bringImportContainer = document.getElementById("bring-import-container");
+                bringImportContainer.dataset.bringBaseQuantity = input.value;
+                bringImportContainer.dataset.bringRequestedQuantity = input.value;
 
-        // Calculer les nouvelles quantités d'ingrédients
-        const originalPortions = 6; // Utilisation de la valeur initiale de nbPortions
-        const currentPortions = parseInt(input.value, 10);
-        const ingredientElements = document.querySelectorAll('.ingredients li'); // Récupérer tous les ingrédients
+                // Calculer les nouvelles quantités d'ingrédients
+                const originalPortions = 6; // Utilisation de la valeur initiale de nbPortions
+                const currentPortions = parseInt(input.value, 10);
+                const ingredientElements = document.querySelectorAll('.ingredients li'); // Récupérer tous les ingrédients
 
-        // Mettre à jour chaque ingrédient
-        ingredientElements.forEach(ingredientElement => {
-            const originalQuantity = parseFloat(ingredientElement.dataset.originalQuantity);
-            const newQuantity = (originalQuantity / originalPortions) * currentPortions; // Calculer la nouvelle quantité
+                // Mettre à jour chaque ingrédient
+                ingredientElements.forEach(ingredientElement => {
+                    const originalQuantity = parseFloat(ingredientElement.dataset.originalQuantity);
+                    const newQuantity = (originalQuantity / originalPortions) * currentPortions; // Calculer la nouvelle quantité
 
-            // Conserver l'unité et le nom de l'ingrédient en utilisant un regex pour conserver tout après la quantité
-            const [unit, ...nameParts] = ingredientElement.textContent.split(' '); // Séparer la quantité de l'unité et du nom
-            const name = nameParts.join(' '); // Reconstruire le nom de l'ingrédient
-            ingredientElement.textContent = `${newQuantity.toFixed(2)} ${unit} ${name}`; // Mettre à jour le texte de l'ingrédient
-        });
-    }
-}
-
+                    // Récupérer l'unité et le nom de l'ingrédient à partir de l'élément
+                    const parts = ingredientElement.textContent.split(' '); // Séparer la chaîne
+                    const unit = parts[1]; // Supposer que l'unité est le deuxième mot
+                    const name = parts.slice(2).join(' '); // Reconstruire le nom de l'ingrédient
+                    ingredientElement.textContent = `${newQuantity.toFixed(2)} ${unit} ${name}`; // Mettre à jour le texte de l'ingrédient
+                });
+            }
+        }
     </script>
 </body>
 </html>
