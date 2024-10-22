@@ -41,7 +41,7 @@
                     <li itemprop="ingredients">2 magrets de canard</li><li itemprop="ingredients">1 pincée de piment d'espellette</li><li itemprop="ingredients">4 cuil. à soupes de miel de montagne</li><li itemprop="ingredients">0.25 citron jaune</li><li itemprop="ingredients">20 cl. de fond de veau</li><li itemprop="ingredients">Poivre noir</li><li itemprop="ingredients">40 g. de beurre doux</li><li itemprop="ingredients">Sel fin</li><li itemprop="ingredients">4 cuil. à soupes de vinaigre de vin rouge</li>
                 </ul>
                 <!-- Ajouter le code Bring! ici -->
-                <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none">
+                <div id="importButton" data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none">
                     <a href="https://www.getbring.com">Bring! Einkaufsliste App für iPhone und Android</a>
                 </div>
             </div>
@@ -60,5 +60,20 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Attendre que le DOM soit complètement chargé
+        document.addEventListener("DOMContentLoaded", function() {
+            // Rendre le bouton d'importation Bring
+            var element = document.getElementById("importButton");
+            window.bringwidgets.import.render(element, {
+                url: window.location.href,
+                theme: "light", // Ajuster selon votre thème
+                language: "fr",
+                baseQuantity: "6",
+                requestedQuantity: "6"
+            });
+        });
+    </script>
 </body>
 </html>
