@@ -54,6 +54,27 @@
         .button-container button {
             padding: 10px;
             margin: 0 10px;
+            background-color: #FCFCFC; /* Couleur de fond */
+            color: #CB6863; /* Couleur du texte - et + */
+            border: 2px solid #CB6863; /* Couleur du contour */
+            border-radius: 50%;
+            font-size: 20px;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: 0.3s ease; /* Animation pour l'effet hover */
+        }
+        .button-container button:hover {
+            color: #F6E2DF; /* Couleur du texte au hover */
+            border-color: #F6E2DF; /* Couleur du contour au hover */
+        }
+        .button-container input {
+            text-align: center;
+            width: 60px;
+            background-color: #FCFCFC;
+            border: none;
+            color: #CB6863;
+            font-size: 18px;
         }
         .bring-container {
             display: flex;
@@ -71,7 +92,7 @@
                 <h4>Portions</h4>
                 <div class="button-container">
                     <button onclick="updatePortions(-1)">-</button>
-                    <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
+                    <input type="number" id="portion-input" value="6" readonly>
                     <button onclick="updatePortions(1)">+</button>
                 </div>
             </div>
