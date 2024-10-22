@@ -129,6 +129,8 @@
     </div>
 
     <script>
+        const originalIngredients = [{"quantite":2,"unite":"","nom":"magrets de canard"},{"quantite":1,"unite":"pincée","nom":" de piment d'espellette"},{"quantite":4,"unite":"cuil. à soupe","nom":" de miel de montagne"},{"quantite":0.25,"unite":"","nom":"citron jaune"},{"quantite":20,"unite":"cl.","nom":" de fond de veau"},{"quantite":null,"unite":"","nom":["Poivre noir"]},{"quantite":40,"unite":"g.","nom":" de beurre doux"},{"quantite":null,"unite":"","nom":["Sel fin"]},{"quantite":4,"unite":"cuil. à soupe","nom":" de vinaigre de vin rouge"}];
+
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
@@ -144,7 +146,7 @@
                 const ingredientList = document.getElementById("ingredient-list");
                 ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
 
-                ingredientsList.forEach(ingredient => {
+                originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
                     let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
                     ingredientList.innerHTML += `<li>${newQuantite} ${ingredient.unite} ${ingredient.nom}</li>`; // Utiliser les backticks ici
