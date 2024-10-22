@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"> <!-- Ajout de l'encodage -->
+    <meta charset="UTF-8">
     <title>Magret de canard (sauce au miel et thym)</title>
     <script type="application/ld+json">
     {
@@ -57,19 +57,19 @@
             align-items: center;
             padding: 10px;
             margin: 0 10px;
-            background-color: #FCFCFC; /* Couleur de fond */
-            color: #CB6863; /* Couleur du texte - et + */
-            border: 2px solid #CB6863; /* Couleur du contour */
+            background-color: #FCFCFC;
+            color: #CB6863;
+            border: 2px solid #CB6863;
             border-radius: 50%;
             font-size: 20px;
             width: 40px;
             height: 40px;
             cursor: pointer;
-            transition: 0.3s ease; /* Animation pour l'effet hover */
+            transition: 0.3s ease;
         }
         .button-container button:hover {
-            color: #F6E2DF; /* Couleur du texte au hover */
-            border-color: #F6E2DF; /* Couleur du contour au hover */
+            color: #F6E2DF;
+            border-color: #F6E2DF;
         }
         .button-container input {
             text-align: center;
@@ -78,7 +78,7 @@
             border: none;
             color: #CB6863;
             font-size: 18px;
-            height: 40px; /* Même hauteur que les boutons */
+            height: 40px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -108,44 +108,8 @@
                     <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
                 </div>
             </div>
-            <ul>
-                
-                    <li data-original-quantity="2">
-                        2  magrets de canard
-                    </li>
-                
-                    <li data-original-quantity="1">
-                        1 pincée  de piment d'espellette
-                    </li>
-                
-                    <li data-original-quantity="4">
-                        4 cuil. à soupe  de miel de montagne
-                    </li>
-                
-                    <li data-original-quantity="0.25">
-                        0.25  citron jaune
-                    </li>
-                
-                    <li data-original-quantity="20">
-                        20 cl.  de fond de veau
-                    </li>
-                
-                    <li data-original-quantity="null">
-                        null  Poivre noir
-                    </li>
-                
-                    <li data-original-quantity="40">
-                        40 g.  de beurre doux
-                    </li>
-                
-                    <li data-original-quantity="null">
-                        null  Sel fin
-                    </li>
-                
-                    <li data-original-quantity="4">
-                        4 cuil. à soupe  de vinaigre de vin rouge
-                    </li>
-                
+            <ul id="ingredient-list">
+                <li>2  magrets de canard</li><li>1 pincée  de piment d'espellette</li><li>4 cuil. à soupe  de miel de montagne</li><li>0.25  citron jaune</li><li>20 cl.  de fond de veau</li><li>null  Poivre noir</li><li>40 g.  de beurre doux</li><li>null  Sel fin</li><li>4 cuil. à soupe  de vinaigre de vin rouge</li>
             </ul>
         </div>
         <div class="preparations">
@@ -168,29 +132,22 @@
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
-            if (currentValue + delta > 0) { 
+            if (currentValue + delta > 0) {
                 input.value = currentValue + delta;
 
                 // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
-                const bringImportContainer = document.getElementById("bring-import-container");
-                bringImportContainer.dataset.bringBaseQuantity = input.value;
-                bringImportContainer.dataset.bringRequestedQuantity = input.value;
+                const bringContainer = document.getElementById("bring-import-container");
+                bringContainer.setAttribute("data-bring-base-quantity", input.value);
+                bringContainer.setAttribute("data-bring-requested-quantity", input.value);
 
-                // Calculer les nouvelles quantités d'ingrédients
-                const originalPortions = 6; // Utilisation de la valeur initiale de nbPortions
-                const currentPortions = parseInt(input.value, 10);
-                const ingredientElements = document.querySelectorAll('.ingredients li'); // Récupérer tous les ingrédients
+                // Mettre à jour les quantités des ingrédients
+                const ingredientList = document.getElementById("ingredient-list");
+                ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
 
-                // Mettre à jour chaque ingrédient
-                ingredientElements.forEach(ingredientElement => {
-                    const originalQuantity = parseFloat(ingredientElement.dataset.originalQuantity);
-                    const newQuantity = (originalQuantity / originalPortions) * currentPortions; // Calculer la nouvelle quantité
-
-                    // Récupérer l'unité et le nom de l'ingrédient à partir de l'élément
-                    const parts = ingredientElement.textContent.split(' '); // Séparer la chaîne
-                    const unit = parts[1]; // Supposer que l'unité est le deuxième mot
-                    const name = parts.slice(2).join(' '); // Reconstruire le nom de l'ingrédient
-                    ingredientElement.textContent = `${newQuantity.toFixed(2)} ${unit} ${name}`; // Mettre à jour le texte de l'ingrédient
+                ingredientsList.forEach(ingredient => {
+                    // Calculer la nouvelle quantité
+                    let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
+                    ingredientList.innerHTML += `<li>${newQuantite} ${ingredient.unite} ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
             }
         }
