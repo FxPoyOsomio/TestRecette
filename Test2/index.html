@@ -109,7 +109,7 @@
                 </div>
             </div>
             <ul>
-                <li>2  magrets de canard</li><li>1 pincée  de piment d'espellette</li><li>4 cuil. à soupe  de miel de montagne</li><li>0.25  citron jaune</li><li>20 cl.  de fond de veau</li><li>null  Poivre noir</li><li>40 g.  de beurre doux</li><li>null  Sel fin</li><li>4 cuil. à soupe  de vinaigre de vin rouge</li>
+                <li data-original-quantity="2">2  magrets de canard</li><li data-original-quantity="1">1 pincée  de piment d'espellette</li><li data-original-quantity="4">4 cuil. à soupe  de miel de montagne</li><li data-original-quantity="0.25">0.25  citron jaune</li><li data-original-quantity="20">20 cl.  de fond de veau</li><li data-original-quantity="null">null  Poivre noir</li><li data-original-quantity="40">40 g.  de beurre doux</li><li data-original-quantity="null">null  Sel fin</li><li data-original-quantity="4">4 cuil. à soupe  de vinaigre de vin rouge</li>
             </ul>
         </div>
         <div class="preparations">
@@ -129,6 +129,7 @@
     </div>
 
     <script>
+        // Fonction pour mettre à jour les portions
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
@@ -136,9 +137,21 @@
                 input.value = currentValue + delta;
 
                 // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
-                const bringContainer = document.getElementById("bring-import-container");
-                bringContainer.setAttribute("data-bring-base-quantity", input.value);
-                bringContainer.setAttribute("data-bring-requested-quantity", input.value);
+                const bringImportContainer = document.getElementById("bring-import-container");
+                bringImportContainer.dataset.bringBaseQuantity = input.value;
+                bringImportContainer.dataset.bringRequestedQuantity = input.value;
+
+                // Calculer les nouvelles quantités d'ingrédients
+                const originalPortions = 6; // Utilisation de la valeur initiale de nbPortions
+                const currentPortions = parseInt(input.value, 10);
+                const ingredientElements = document.querySelectorAll('.ingredients li'); // Récupérer tous les ingrédients
+
+                // Mettre à jour chaque ingrédient
+                ingredientElements.forEach(ingredientElement => {
+                    const originalQuantity = parseFloat(ingredientElement.dataset.originalQuantity);
+                    const newQuantity = (originalQuantity / originalPortions) * currentPortions; // Calculer la nouvelle quantité
+                    ingredientElement.textContent = `${newQuantity.toFixed(2)} ${ingredientElement.textContent.split(' ').slice(2).join(' ')}`; // Conserve l'unité et le nom de l'ingrédient
+                });
             }
         }
     </script>
