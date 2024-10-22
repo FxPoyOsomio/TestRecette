@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="bring-container">
-                <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6">
+                <div id="bring-import-container" data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" data-bring-requested-quantity="6">
                     <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
                 </div>
             </div>
@@ -134,6 +134,11 @@
             let currentValue = parseInt(input.value, 10);
             if (currentValue + delta > 0) { 
                 input.value = currentValue + delta;
+
+                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
+                const bringContainer = document.getElementById("bring-import-container");
+                bringContainer.setAttribute("data-bring-base-quantity", input.value);
+                bringContainer.setAttribute("data-bring-requested-quantity", input.value);
             }
         }
     </script>
