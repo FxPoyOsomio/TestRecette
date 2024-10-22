@@ -12,24 +12,22 @@
     }
     </script>
     <script async="async" src="//platform.getbring.com/widgets/import.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Open Sans', sans-serif; }
-        h1 { 
-            color: #CB6863; /* Couleur du titre de la recette */
+        h1, h2, h3 { color: #CB6863; } /* Couleur des titres */
+        h1 {
             font-family: 'Montserrat', sans-serif; /* Police Montserrat pour le titre */
             font-weight: bold; /* Titre en gras */
             text-align: center; /* Titre centré */
         }
         h2 {
-            color: #CB6863; /* Couleur des titres H2 */
             font-family: 'Montserrat', sans-serif; /* Titres en Montserrat */
             font-weight: bold; /* Titres en gras */
         }
         h3 {
-            color: #CB6863; /* Couleur des titres H3 */
             font-family: 'Montserrat', sans-serif; /* Titres en Montserrat */
-            font-weight: normal; /* Titres H3 en poids normal */
+            font-weight: 300; /* Poids light pour H3 */
         }
         .container {
             display: flex;
@@ -39,11 +37,10 @@
         .ingredients {
             width: 30%; /* Colonne de gauche à 30% */
             background-color: #FCFCFC; /* Couleur de fond pour la colonne des ingrédients */
-            padding: 10px 22px; /* Ajout d'un padding de 22 pixels à gauche et à droite */
+            padding: 10px 35px; /* Ajout de padding à gauche et à droite de 35px */
         }
         .preparations {
             width: 70%; /* Colonne de droite à 70% */
-            padding: 0 22px; /* Ajout d'un padding de 22 pixels à gauche et à droite */
         }
         ul {
             list-style-type: disc; /* Type de liste */
@@ -56,9 +53,6 @@
     </style>
 </head>
 <body>
-    <div class="preparations">
-        <h1>Magret de canard (sauce au miel et thym)</h1> <!-- Titre de la recette centré en haut de la colonne de droite -->
-    </div>
     <div class="container">
         <div class="ingredients">
             <h2>Ingrédients</h2>
@@ -71,6 +65,7 @@
             </div>
         </div>
         <div class="preparations">
+            <h1>Magret de canard (sauce au miel et thym)</h1> <!-- Titre de la recette centré en haut de la colonne de droite -->
             <h2>Préparations</h2>
             
                 <h3>Préparation des magrets</h3>
