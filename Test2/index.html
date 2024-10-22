@@ -15,45 +15,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Open Sans', sans-serif; }
-        h1, h2, h3, h4 { color: #CB6863; } /* Couleur pour H1, H2, H3, H4 */
-        h3 { font-weight: 300; } /* H3 en light */
+        h1, h2, h3, h4 { color: #CB6863; }
+        h3 { font-weight: 300; }
         .container {
             display: flex;
             justify-content: space-between;
             margin: 20px;
         }
         .ingredients {
-            width: 30%; /* Colonne de gauche à 30% */
-            background-color: #FCFCFC; /* Couleur de fond des ingrédients */
-            padding: 0 35px; /* Espace à gauche et à droite de 35px */
+            width: 30%;
+            background-color: #FCFCFC;
+            padding: 0 35px;
         }
         .preparations {
-            width: 70%; /* Colonne de droite à 70% */
-            padding: 0 50px; /* Espace à gauche et à droite de 50px */
+            width: 70%;
+            padding: 0 50px;
         }
         ul {
-            list-style-type: disc; /* Type de liste */
-            padding-left: 20px; /* Décalage de la liste */
-            font-size: 16px; /* Taille de la police pour les ingrédients */
+            list-style-type: disc;
+            padding-left: 20px;
+            font-size: 16px;
         }
         .instructions {
-            font-size: 16px; /* Taille de la police pour les instructions */
+            font-size: 16px;
         }
         .portion-control {
-            text-align: center; /* Centre le contenu de la portion-control */
-            margin-bottom: 20px; /* Marge inférieure pour espacer */
+            text-align: center;
+            margin-bottom: 20px;
         }
         .portion-control h4 {
-            margin-bottom: 10px; /* Espace entre le titre et les boutons */
+            margin-bottom: 10px;
         }
         .button-container {
-            display: flex; /* Affichage en flex pour les boutons */
-            justify-content: center; /* Centrer les boutons */
-            align-items: center; /* Aligner verticalement */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .button-container button {
-            padding: 10px; /* Ajout de padding aux boutons */
-            margin: 0 10px; /* Espace entre les boutons */
+            padding: 10px;
+            margin: 0 10px;
         }
     </style>
 </head>
@@ -61,26 +61,24 @@
     <div class="container">
         <div class="ingredients">
             <h2>Ingrédients</h2>
-            <div>
-                <div class="portion-control">
-                    <h4>Portions</h4>
-                    <div class="button-container">
-                        <button onclick="updatePortions(-1)">-</button>
-                        <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
-                        <button onclick="updatePortions(1)">+</button>
-                    </div>
-                </div>
-                <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
-                    <a href="https://www.getbring.com">Bring! Einkaufsliste App für iPhone und Android</a>
+            <div class="portion-control">
+                <h4>Portions</h4>
+                <div class="button-container">
+                    <button onclick="updatePortions(-1)">-</button>
+                    <input type="number" id="portion-input" value="6" style="text-align: center; width: 60px;" readonly>
+                    <button onclick="updatePortions(1)">+</button>
                 </div>
             </div>
             <ul>
-                <li>2 magrets de canard</li><li>1 pincée de piment d'espellette</li><li>4 cuil. à soupes de miel de montagne</li><li>0.25 citron jaune</li><li>20 cl. de fond de veau</li><li>Poivre noir</li><li>40 g. de beurre doux</li><li>Sel fin</li><li>4 cuil. à soupes de vinaigre de vin rouge</li> <!-- Affiche les ingrédients des préparations -->
+                <li>2 magrets de canard</li><li>1 pincée de piment d'espellette</li><li>4 cuil. à soupes de miel de montagne</li><li>0.25 citron jaune</li><li>20 cl. de fond de veau</li><li>Poivre noir</li><li>40 g. de beurre doux</li><li>Sel fin</li><li>4 cuil. à soupes de vinaigre de vin rouge</li>
             </ul>
+            <div data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" style="display:none; margin-top: 20px;">
+                <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
+            </div>
         </div>
         <div class="preparations">
             <h2>Préparations</h2>
-            <h1 style="text-align: center; font-weight: bold;">Magret de canard (sauce au miel et thym)</h1> <!-- Titre de la recette centré -->
+            <h1 style="text-align: center; font-weight: bold;">Magret de canard (sauce au miel et thym)</h1>
             
                 <h3>Préparation des magrets</h3>
                 <p class="instructions">      1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br><br>      2. Parer les 2 magrets de canard en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br><br>      3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br><br>      4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br><br>      5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).</p>
@@ -98,7 +96,7 @@
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
-            if (currentValue + delta > 0) { // Assurer que la valeur ne soit pas négative
+            if (currentValue + delta > 0) { 
                 input.value = currentValue + delta;
             }
         }
