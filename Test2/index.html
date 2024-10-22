@@ -58,6 +58,12 @@
             display: flex; /* Utilisation de flexbox pour aligner les éléments */
             align-items: center; /* Centre verticalement */
             margin: 10px 0; /* Marges verticales */
+            justify-content: center; /* Centre le contenu horizontalement */
+        }
+        .portion-control h4 {
+            margin-bottom: 10px; /* Espacement entre le titre et la boîte d'entrée */
+            text-align: center; /* Centrer le titre */
+            width: 100%; /* Prendre toute la largeur de la boîte */
         }
         .portion-control button {
             background-color: #CB6863; /* Couleur du bouton */
@@ -80,8 +86,8 @@
     <div class="container">
         <div class="ingredients">
             <h2>Ingrédients</h2>
-            <h4>Nombre de portions</h4>
             <div class="portion-control">
+                <h4>Portions</h4> <!-- Titre centré au-dessus de la boîte -->
                 <button id="decrease-button">-</button>
                 <input type="number" id="portion-input" value="6" readonly>
                 <button id="increase-button">+</button>
