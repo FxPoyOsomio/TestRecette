@@ -21,10 +21,15 @@
             font-weight: bold; /* Titre en gras */
             text-align: center; /* Titre centré */
         }
-        h2, h3 {
-            color: #CB6863; /* Couleur des titres */
+        h2 {
+            color: #CB6863; /* Couleur des titres H2 */
             font-family: 'Montserrat', sans-serif; /* Titres en Montserrat */
             font-weight: bold; /* Titres en gras */
+        }
+        h3 {
+            color: #CB6863; /* Couleur des titres H3 */
+            font-family: 'Montserrat', sans-serif; /* Titres en Montserrat */
+            font-weight: normal; /* Titres H3 en poids normal */
         }
         .container {
             display: flex;
@@ -34,10 +39,11 @@
         .ingredients {
             width: 30%; /* Colonne de gauche à 30% */
             background-color: #FCFCFC; /* Couleur de fond pour la colonne des ingrédients */
-            padding: 10px; /* Ajout d'un padding pour l'esthétique */
+            padding: 10px 22px; /* Ajout d'un padding de 22 pixels à gauche et à droite */
         }
         .preparations {
             width: 70%; /* Colonne de droite à 70% */
+            padding: 0 22px; /* Ajout d'un padding de 22 pixels à gauche et à droite */
         }
         ul {
             list-style-type: disc; /* Type de liste */
@@ -50,7 +56,9 @@
     </style>
 </head>
 <body>
-    <h1>Magret de canard (sauce au miel et thym)</h1>
+    <div class="preparations">
+        <h1>Magret de canard (sauce au miel et thym)</h1> <!-- Titre de la recette centré en haut de la colonne de droite -->
+    </div>
     <div class="container">
         <div class="ingredients">
             <h2>Ingrédients</h2>
