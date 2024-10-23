@@ -182,7 +182,7 @@
 
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
-                    let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
+                    let newQuantite = (ingredient.quantite * input.value / ${nbPortions}).toFixed(2); // Arrondir à deux décimales
                     ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
             }
