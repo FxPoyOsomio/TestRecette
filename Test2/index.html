@@ -205,9 +205,14 @@
                 });
 
                 console.log("Après remplacement:", instructionsHTML); // Débogage
-                instructionElement.innerHTML = instructionsHTML; // Met à jour le HTML avec les instructions modifiées
-            });
-        }
-    </script>
+
+            // Mise à jour des instructions avec le contenu remplacé
+            instructionElement.innerHTML = instructionsHTML;
+        });
+    }
+
+    // Appeler la fonction de remplacement des placeholders après le chargement de la page
+    window.onload = replaceIngredientPlaceholders;
+</script>
 </body>
 </html>
