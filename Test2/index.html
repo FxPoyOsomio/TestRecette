@@ -139,63 +139,43 @@
             <h2>Préparations</h2>
             
                 <h3>Préparation des magrets</h3>
-                <p class="instructions">      1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br><br>      2. Parer les 2 magrets de canard en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br><br>      3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br><br>      4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br><br>      5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).</p>
+                <div class="instructions">
+                    <p>1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br></p><p>2. Parer les [1] en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br></p><p>3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br></p><p>4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br></p><p>5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).<br></p>
+                </div>
             
                 <h3>Sauce au miel & thym</h3>
-                <p class="instructions">      1. Ajouter 4 cuil. à soupes de miel de montagne dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer 4 cuil. à soupes de vinaigre de vin rouge et laisser réduire.<br><br>      2. Quand le mélange a bien réduit et devient sirupeux, ajouter 20 cl. de fond de veau et assaisonner de 1 pincée de piment d'espellette, de Sel fin et de Poivre noir à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br><br>      3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter 40 g. de beurre doux froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de 0.25 citron jaune.</p>
+                <div class="instructions">
+                    <p>1. Ajouter [1] dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer [2] et laisser réduire.<br></p><p>2. Quand le mélange a bien réduit et devient sirupeux, ajouter [1] et assaisonner de [2], de [3] et de [4] à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br></p><p>3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter [1] froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de [2].<br></p>
+                </div>
             
                 <h3>Cuisson à coeur des magrets</h3>
-                <p class="instructions">      2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br><br>      3. Trancher et servir immédiatement les magret de canard.</p>
+                <div class="instructions">
+                    <p>2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br></p><p>3. Trancher et servir immédiatement les magret de canard.<br></p>
+                </div>
             
         </div>
     </div>
-
     <script>
-        const originalIngredients = [{"quantite":2,"unite":"","nom":"magrets de canard"},{"quantite":1,"unite":"pincée","nom":" de piment d'espellette"},{"quantite":4,"unite":"cuil. à soupe","nom":" de miel de montagne"},{"quantite":0.25,"unite":"","nom":"citron jaune"},{"quantite":20,"unite":"cl.","nom":" de fond de veau"},{"quantite":null,"unite":"","nom":["Poivre noir"]},{"quantite":40,"unite":"g.","nom":" de beurre doux"},{"quantite":null,"unite":"","nom":["Sel fin"]},{"quantite":4,"unite":"cuil. à soupe","nom":" de vinaigre de vin rouge"}];
-        
-        // Fonction pour formater les nombres selon les règles spécifiées
-        function formatQuantite(number) {
-            // Convertir en nombre flottant
-            let formattedNumber = parseFloat(number);
-
-            // Si le nombre a une partie entière, on affiche sans les zéros inutiles
-            if (formattedNumber % 1 === 0) {
-                return formattedNumber.toString(); // Afficher comme un entier si possible
-            } else {
-                // Sinon, afficher jusqu'à 3 décimales, sans les zéros en fin
-                return formattedNumber.toFixed(3).replace(/.?0+$/, ''); // Limiter à 3 décimales maximum et supprimer les zéros inutiles
-            }
-        }
-
-        // Mise à jour de la fonction updatePortions
-        function updatePortions(delta) {
-            const input = document.getElementById("portion-input");
-            let currentValue = parseInt(input.value, 10);
+        const initialNbPortions = 6;
+        function updatePortions(change) {
+            const inputElement = document.getElementById('portion-input');
+            const currentPortions = parseInt(inputElement.value);
+            const newPortions = currentPortions + change;
+            if (newPortions < 1) return;
+            inputElement.value = newPortions;
             
-            if (currentValue + delta > 0) {
-                input.value = currentValue + delta;
+            // Update la quantité des ingrédients
+            const ingredientList = document.getElementById('ingredient-list');
+            const items = ingredientList.querySelectorAll('li');
+            const baseQuantities = [2,1,4,0.25,20,,40,,4];
 
-                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
-                const bringContainer = document.getElementById("bring-import-container");
-                bringContainer.setAttribute("data-bring-base-quantity", input.value);
-                bringContainer.setAttribute("data-bring-requested-quantity", input.value);
-
-                // Mettre à jour les quantités des ingrédients
-                const ingredientList = document.getElementById("ingredient-list");
-                ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
-
-                originalIngredients.forEach(ingredient => {
-                    // Calculer la nouvelle quantité
-                    let newQuantite = ingredient.quantite * input.value / 6;
-
-                    // Utiliser la fonction de formatage pour simplifier le nombre
-                    let formattedQuantite = formatQuantite(newQuantite);
-
-                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${formattedQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`;
-                });
-            }
+            items.forEach((item, index) => {
+                const baseQuantity = baseQuantities[index];
+                const newQuantity = (baseQuantity * newPortions) / initialNbPortions;
+                const quantityElement = item.querySelector('.highlight-quantity');
+                quantityElement.textContent = newQuantity.toFixed(2) + " ";
+            });
         }
-
     </script>
 </body>
 </html>
