@@ -196,19 +196,18 @@
 
                 // Itération sur les ingrédients
                 crochetIngredients.forEach(ingredient => {
-                    const replacement = `${ingredient.quantity} ${ingredient.unit || ''} ${ingredient.name}`;
-                    console.log("Remplacement pour l'ordre", ingredient.order, "par", replacement); // Débogage
+                    // Créer une expression régulière pour trouver les chiffres entre crochets, par exemple [1], [2], etc.
+                    const regex = new RegExp("\[" + ingredient.order + "\]", 'g'); // Recherche des numéros entre crochets, comme [1], [2], etc.
 
-                    // Remplacer les placeholders par les détails de l'ingrédient
-                    instructionsHTML = instructionsHTML.replace(new RegExp(`\[${ingredient.order}\]`, 'g'), replacement);
+                    // Remplacer les occurrences trouvées par la quantité, l'unité et le nom de l'ingrédient
+                    instructionsHTML = instructionsHTML.replace(regex, `<span class="highlight-quantity">${ingredient.quantity} ${ingredient.unit}</span> ${ingredient.name}`);
                 });
 
                 console.log("Après remplacement:", instructionsHTML); // Débogage
+                instructionElement.innerHTML = instructionsHTML; // Mettre à jour le HTML des instructions
+            });
+        }
 
-            // Mise à jour des instructions avec le contenu remplacé
-            instructionElement.innerHTML = instructionsHTML;
-        });
-    }
 
     // Appeler la fonction de remplacement des placeholders après le chargement de la page
     window.onload = replaceIngredientPlaceholders;
