@@ -188,6 +188,26 @@
                 });
             }
         }
+        function replaceIngredientPlaceholders() {
+    const instructionsElements = document.querySelectorAll('.instructions');
+
+    instructionsElements.forEach(instructionElement => {
+        let instructionsHTML = instructionElement.innerHTML;
+        console.log("Avant remplacement:", instructionsHTML); // Débogage
+
+        // Itération sur les ingrédients
+        originalIngredients.forEach(ingredient => {
+            const replacement = `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`;
+            console.log("Remplacement pour l'ordre", ingredient.order, "par", replacement); // Débogage
+
+            // Remplacer les placeholders par les détails de l'ingrédient
+            instructionsHTML = instructionsHTML.replace(new RegExp(`[${ingredient.order}]`, 'g'), replacement);
+        });
+
+        console.log("Après remplacement:", instructionsHTML); // Débogage
+        instructionElement.innerHTML = instructionsHTML; // Met à jour le HTML avec les instructions modifiées
+    });
+}
     </script>
 </body>
 </html>
