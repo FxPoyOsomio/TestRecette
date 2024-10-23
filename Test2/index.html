@@ -108,74 +108,39 @@
                 </div>
             </div>
             <div class="bring-container">
-                <div id="bring-import-container" data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-base-quantity="6" data-bring-requested-quantity="6">
-                    <a href="https://www.getbring.com">Bring! Einkaufsliste App pour iPhone et Android</a>
+                <div id="bring-import-container" data-bring-import data-bring-language="fr" data-bring-theme="light" data-bring-recipes="">
+                    <script type="text/javascript">
+                        const portionInput = document.getElementById('portion-input');
+                        const updatePortions = (change) => {
+                            let newValue = parseInt(portionInput.value) + change;
+                            portionInput.value = newValue < 1 ? 1 : newValue; // Ne pas laisser moins de 1 portion
+                        };
+                    </script>
                 </div>
             </div>
-            <ul id="ingredient-list">
-                
-                    <li><span class="highlight-quantity">2 </span> magrets de canard</li>
-                
-                    <li><span class="highlight-quantity">1 pincée</span>  de piment d'espellette</li>
-                
-                    <li><span class="highlight-quantity">4 cuil. à soupe</span>  de miel de montagne</li>
-                
-                    <li><span class="highlight-quantity">0.25 </span> citron jaune</li>
-                
-                    <li><span class="highlight-quantity">20 cl.</span>  de fond de veau</li>
-                
-                    <li><span class="highlight-quantity">null </span> Poivre noir</li>
-                
-                    <li><span class="highlight-quantity">40 g.</span>  de beurre doux</li>
-                
-                    <li><span class="highlight-quantity">null </span> Sel fin</li>
-                
-                    <li><span class="highlight-quantity">4 cuil. à soupe</span>  de vinaigre de vin rouge</li>
-                
+            <ul>
+                <li>2  magrets de canard</li><li>1 pincée  de piment d'espellette</li><li>4 cuil. à soupe  de miel de montagne</li><li>0.25  citron jaune</li><li>20 cl.  de fond de veau</li><li>null  Poivre noir</li><li>40 g.  de beurre doux</li><li>null  Sel fin</li><li>4 cuil. à soupe  de vinaigre de vin rouge</li>
             </ul>
         </div>
         <div class="preparations">
-            <h1 style="text-align: center; font-weight: bold;">Magret de canard (sauce au miel et thym)</h1>
-            <h2>Préparations</h2>
+            <h2>Préparation</h2>
             
                 <h3>Préparation des magrets</h3>
-                <div class="instructions">
-                    <p>1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br></p><p>2. Parer les [1] en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br></p><p>3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br></p><p>4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br></p><p>5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).<br></p>
-                </div>
+                <ul>
+                    <li class="instructions">1. Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br></li><li class="instructions">2. Parer les [1] en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br></li><li class="instructions">3. Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br></li><li class="instructions">4. Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br></li><li class="instructions">5. Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).<br></li>
+                </ul>
             
                 <h3>Sauce au miel & thym</h3>
-                <div class="instructions">
-                    <p>1. Ajouter [1] dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer [2] et laisser réduire.<br></p><p>2. Quand le mélange a bien réduit et devient sirupeux, ajouter [1] et assaisonner de [2], de [3] et de [4] à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br></p><p>3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter [1] froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de [2].<br></p>
-                </div>
+                <ul>
+                    <li class="instructions">1. Ajouter [1] dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer [2] et laisser réduire.<br></li><li class="instructions">2. Quand le mélange a bien réduit et devient sirupeux, ajouter [1] et assaisonner de [2], de [3] et de [4] à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br></li><li class="instructions">3. Retirer la casserole du feu pour monter la sauce au beurre. Ajouter [1] froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de [2].<br></li>
+                </ul>
             
                 <h3>Cuisson à coeur des magrets</h3>
-                <div class="instructions">
-                    <p>2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br></p><p>3. Trancher et servir immédiatement les magret de canard.<br></p>
-                </div>
+                <ul>
+                    <li class="instructions">2. Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br></li><li class="instructions">3. Trancher et servir immédiatement les magret de canard.<br></li>
+                </ul>
             
         </div>
     </div>
-    <script>
-        const initialNbPortions = 6;
-        function updatePortions(change) {
-            const inputElement = document.getElementById('portion-input');
-            const currentPortions = parseInt(inputElement.value);
-            const newPortions = currentPortions + change;
-            if (newPortions < 1) return;
-            inputElement.value = newPortions;
-            
-            // Update la quantité des ingrédients
-            const ingredientList = document.getElementById('ingredient-list');
-            const items = ingredientList.querySelectorAll('li');
-            const baseQuantities = [2,1,4,0.25,20,,40,,4];
-
-            items.forEach((item, index) => {
-                const baseQuantity = baseQuantities[index];
-                const newQuantity = (baseQuantity * newPortions) / initialNbPortions;
-                const quantityElement = item.querySelector('.highlight-quantity');
-                quantityElement.textContent = newQuantity.toFixed(2) + " ";
-            });
-        }
-    </script>
 </body>
 </html>
