@@ -163,7 +163,7 @@
     <script>
         // Récupération des ingrédients pour la mise à jour
         const originalIngredients = [{"quantite":2,"unite":null,"nom":"magrets de canard"},{"quantite":1,"unite":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"nom":" de piment d'espellette"},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de miel de montagne"},{"quantite":0.25,"unite":null,"nom":"citron jaune"},{"quantite":20,"unite":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"nom":" de fond de veau"},{"quantite":null,"unite":null,"nom":["Poivre noir"]},{"quantite":40,"unite":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"nom":" de beurre doux"},{"quantite":null,"unite":null,"nom":["Sel fin"]},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de vinaigre de vin rouge"}];
-        const crochetIngredients =[{"order":1,"quantity":2,"unit":"","name":"magrets de canard"},{"order":2,"quantity":1,"unit":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"name":" de piment d'espellette"},{"order":3,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de miel de montagne"},{"order":4,"quantity":0.25,"unit":"","name":"citron jaune"},{"order":5,"quantity":20,"unit":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"name":" de fond de veau"},{"order":6,"quantity":null,"unit":"","name":["Poivre noir"]},{"order":7,"quantity":40,"unit":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"name":" de beurre doux"},{"order":8,"quantity":null,"unit":"","name":["Sel fin"]},{"order":9,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de vinaigre de vin rouge"}]
+        const crochetIngredients =[{"order":1,"quantity":2,"unit":"","name":"magrets de canard"},{"order":2,"quantity":1,"unit":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"name":" de piment d'espellette"},{"order":3,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de miel de montagne"},{"order":4,"quantity":0.25,"unit":"","name":"citron jaune"},{"order":5,"quantity":20,"unit":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"name":" de fond de veau"},{"order":6,"quantity":null,"unit":"","name":["Poivre noir"]},{"order":7,"quantity":40,"unit":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"name":" de beurre doux"},{"order":8,"quantity":null,"unit":"","name":["Sel fin"]},{"order":9,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de vinaigre de vin rouge"}];
 
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
@@ -182,7 +182,7 @@
 
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
-                    let newQuantite = (ingredient.quantite * input.value / ${nbPortions}).toFixed(2); // Arrondir à deux décimales
+                    let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
                     ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
             }
@@ -197,7 +197,7 @@
                 // Itération sur les ingrédients
                 crochetIngredients.forEach(ingredient => {
                     // Créer une expression régulière pour trouver les chiffres entre crochets, par exemple [1], [2], etc.
-                    const regex = new RegExp("\["${ingredient.order}"\]", 'g'); // Recherche des numéros entre crochets, comme [1], [2], etc.
+                    const regex = new RegExp("\[" + ingredient.order + "\]", 'g'); // Recherche des numéros entre crochets, comme [1], [2], etc.
 
                     // Remplacer les occurrences trouvées par la quantité, l'unité et le nom de l'ingrédient
                     instructionsHTML = instructionsHTML.replace(regex, `<span class="highlight-quantity">${ingredient.quantity} ${ingredient.unit}</span> ${ingredient.name}`);
