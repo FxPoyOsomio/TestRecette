@@ -13,9 +13,7 @@
         }
     </script>
 
-    <script type="application/json" id="ingredients-data">
-        [{"order":1,"quantity":2,"unit":"","name":"magrets de canard"},{"order":2,"quantity":1,"unit":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"name":" de piment d'espellette"},{"order":3,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de miel de montagne"},{"order":4,"quantity":0.25,"unit":"","name":"citron jaune"},{"order":5,"quantity":20,"unit":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"name":" de fond de veau"},{"order":6,"quantity":null,"unit":"","name":["Poivre noir"]},{"order":7,"quantity":40,"unit":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"name":" de beurre doux"},{"order":8,"quantity":null,"unit":"","name":["Sel fin"]},{"order":9,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de vinaigre de vin rouge"}]
-    </script>
+
     <script async="async" src="//platform.getbring.com/widgets/import.js"></script>
     <style>
         body { font-family: 'Open Sans', sans-serif; }
@@ -165,6 +163,7 @@
     <script>
         // Récupération des ingrédients pour la mise à jour
         const originalIngredients = [{"quantite":2,"unite":null,"nom":"magrets de canard"},{"quantite":1,"unite":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"nom":" de piment d'espellette"},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de miel de montagne"},{"quantite":0.25,"unite":null,"nom":"citron jaune"},{"quantite":20,"unite":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"nom":" de fond de veau"},{"quantite":null,"unite":null,"nom":["Poivre noir"]},{"quantite":40,"unite":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"nom":" de beurre doux"},{"quantite":null,"unite":null,"nom":["Sel fin"]},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de vinaigre de vin rouge"}];
+        const crochetIngredients =[{"order":1,"quantity":2,"unit":"","name":"magrets de canard"},{"order":2,"quantity":1,"unit":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"name":" de piment d'espellette"},{"order":3,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de miel de montagne"},{"order":4,"quantity":0.25,"unit":"","name":"citron jaune"},{"order":5,"quantity":20,"unit":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"name":" de fond de veau"},{"order":6,"quantity":null,"unit":"","name":["Poivre noir"]},{"order":7,"quantity":40,"unit":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"name":" de beurre doux"},{"order":8,"quantity":null,"unit":"","name":["Sel fin"]},{"order":9,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de vinaigre de vin rouge"}]
 
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
@@ -196,7 +195,7 @@
                 console.log("Avant remplacement:", instructionsHTML); // Débogage
 
                 // Itération sur les ingrédients
-                originalIngredients.forEach(ingredient => {
+                crochetIngredients.forEach(ingredient => {
                     const replacement = `${ingredient.quantity} ${ingredient.unit || ''} ${ingredient.name}`;
                     console.log("Remplacement pour l'ordre", ingredient.order, "par", replacement); // Débogage
 
