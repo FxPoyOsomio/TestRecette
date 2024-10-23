@@ -103,11 +103,11 @@
                 <h4>Portions</h4>
                 <div class="button-container">
                     <button onclick="updatePortions(-1)">-</button>
-                    <input type="text" id="nbPortions" value="6" readonly>
+                    <input type="text" id="portion-input" value="6" readonly>
                     <button onclick="updatePortions(1)">+</button>
                 </div>
             </div>
-            <ul>
+            <ul id="ingredient-list">
                 
                     <li>2  magrets de canard</li>
                 
@@ -175,19 +175,33 @@
             
         </div>
     </div>
-    <div class="bring-container">
+    <div class="bring-container" id="bring-import-container" data-bring-base-quantity="6" data-bring-requested-quantity="6">
         <h3>Ajouter à Bring!</h3>
-        <div id="bringButton" data-products='[{"name": "Magret de canard (sauce au miel et thym)", "quantity": "6 portions"}]'></div>
     </div>
 </body>
 <script>
-    function updatePortions(change) {
-        let input = document.getElementById('nbPortions');
-        let current = parseInt(input.value);
-        let newValue = current + change;
-        if (newValue > 0) {
-            input.value = newValue;
-            document.getElementById('bringButton').dataset.products = JSON.stringify([{"name": "Magret de canard (sauce au miel et thym)", "quantity": newValue + " portions"}]);
+    const originalIngredients = [{"quantite":2,"unite":"","nom":"magrets de canard"},{"quantite":1,"unite":"pincée","nom":" de piment d'espellette"},{"quantite":4,"unite":"cuil. à soupe","nom":" de miel de montagne"},{"quantite":0.25,"unite":"","nom":"citron jaune"},{"quantite":20,"unite":"cl.","nom":" de fond de veau"},{"quantite":null,"unite":"","nom":["Poivre noir"]},{"quantite":40,"unite":"g.","nom":" de beurre doux"},{"quantite":null,"unite":"","nom":["Sel fin"]},{"quantite":4,"unite":"cuil. à soupe","nom":" de vinaigre de vin rouge"}];
+
+    function updatePortions(delta) {
+        const input = document.getElementById("portion-input");
+        let currentValue = parseInt(input.value, 10);
+        if (currentValue + delta > 0) {
+            input.value = currentValue + delta;
+
+            // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
+            const bringContainer = document.getElementById("bring-import-container");
+            bringContainer.setAttribute("data-bring-base-quantity", input.value);
+            bringContainer.setAttribute("data-bring-requested-quantity", input.value);
+
+            // Mettre à jour les quantités des ingrédients
+            const ingredientList = document.getElementById("ingredient-list");
+            ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
+
+            originalIngredients.forEach(ingredient => {
+                // Calculer la nouvelle quantité
+                let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
+                ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
+            });
         }
     }
 </script>
