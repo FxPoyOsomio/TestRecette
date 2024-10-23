@@ -91,7 +91,7 @@
         }
         .highlight-quantity {
             color: #CB6863;
-            font-weight: bold;
+            font-weight: 900;
         }
     </style>
 </head>
@@ -152,10 +152,26 @@
 
     <script>
         const originalIngredients = [{"quantite":2,"unite":"","nom":"magrets de canard"},{"quantite":1,"unite":"pincée","nom":" de piment d'espellette"},{"quantite":4,"unite":"cuil. à soupe","nom":" de miel de montagne"},{"quantite":0.25,"unite":"","nom":"citron jaune"},{"quantite":20,"unite":"cl.","nom":" de fond de veau"},{"quantite":null,"unite":"","nom":["Poivre noir"]},{"quantite":40,"unite":"g.","nom":" de beurre doux"},{"quantite":null,"unite":"","nom":["Sel fin"]},{"quantite":4,"unite":"cuil. à soupe","nom":" de vinaigre de vin rouge"}];
+        
+        // Fonction pour formater les nombres selon les règles spécifiées
+        function formatQuantite(number) {
+            // Convertir en nombre flottant
+            let formattedNumber = parseFloat(number);
 
+            // Si le nombre a une partie entière, on affiche sans les zéros inutiles
+            if (formattedNumber % 1 === 0) {
+                return formattedNumber.toString(); // Afficher comme un entier si possible
+            } else {
+                // Sinon, afficher jusqu'à 3 décimales, sans les zéros en fin
+                return formattedNumber.toFixed(3).replace(/.?0+$/, ''); // Limiter à 3 décimales maximum et supprimer les zéros inutiles
+            }
+        }
+
+        // Mise à jour de la fonction updatePortions
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
+            
             if (currentValue + delta > 0) {
                 input.value = currentValue + delta;
 
@@ -170,11 +186,16 @@
 
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
-                    let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
-                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
+                    let newQuantite = ingredient.quantite * input.value / 6;
+
+                    // Utiliser la fonction de formatage pour simplifier le nombre
+                    let formattedQuantite = formatQuantite(newQuantite);
+
+                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${formattedQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`;
                 });
             }
         }
+
     </script>
 </body>
 </html>
