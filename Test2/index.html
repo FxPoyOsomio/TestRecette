@@ -197,7 +197,7 @@
                 // Itération sur les ingrédients
                 crochetIngredients.forEach(ingredient => {
                     // Créer une expression régulière pour trouver les chiffres entre crochets, par exemple [1], [2], etc.
-                    const regex = new RegExp('"\[" ${ingredient.order} "\]"', 'g'); // Recherche des numéros entre crochets, comme [1], [2], etc.
+                    const regex = new RegExp("\["${ingredient.order}"\]", 'g'); // Recherche des numéros entre crochets, comme [1], [2], etc.
 
                     // Remplacer les occurrences trouvées par la quantité, l'unité et le nom de l'ingrédient
                     instructionsHTML = instructionsHTML.replace(regex, `<span class="highlight-quantity">${ingredient.quantity} ${ingredient.unit}</span> ${ingredient.name}`);
