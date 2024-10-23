@@ -9,12 +9,12 @@
         "@context": "http://schema.org",
         "@type": "Recipe",
         "name": "Magret de canard (sauce au miel et thym)",
-        "recipeIngredient": ["2  magrets de canard", "1 pincée  de piment d'espellette", "4 cuil. à soupe  de miel de montagne", "0.25  citron jaune", "20 cl.  de fond de veau", "null  Poivre noir", "40 g.  de beurre doux", "null  Sel fin", "4 cuil. à soupe  de vinaigre de vin rouge"]
+        "recipeIngredient": ["2  magrets de canard", "1 [object Object]  de piment d'espellette", "4 [object Object]  de miel de montagne", "0.25  citron jaune", "20 [object Object]  de fond de veau", "null  Poivre noir", "40 [object Object]  de beurre doux", "null  Sel fin", "4 [object Object]  de vinaigre de vin rouge"]
         }
     </script>
 
     <script type="application/json" id="ingredients-data">
-        [{"quantity":2,"unit":"","name":"magrets de canard"},{"quantity":1,"unit":"pincée","name":" de piment d'espellette"},{"quantity":4,"unit":"cuil. à soupe","name":" de miel de montagne"},{"quantity":0.25,"unit":"","name":"citron jaune"},{"quantity":20,"unit":"cl.","name":" de fond de veau"},{"quantity":null,"unit":"","name":["Poivre noir"]},{"quantity":40,"unit":"g.","name":" de beurre doux"},{"quantity":null,"unit":"","name":["Sel fin"]},{"quantity":4,"unit":"cuil. à soupe","name":" de vinaigre de vin rouge"}]
+        [{"order":1,"quantity":2,"unit":"","name":"magrets de canard"},{"order":2,"quantity":1,"unit":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"name":" de piment d'espellette"},{"order":3,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de miel de montagne"},{"order":4,"quantity":0.25,"unit":"","name":"citron jaune"},{"order":5,"quantity":20,"unit":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"name":" de fond de veau"},{"order":6,"quantity":null,"unit":"","name":["Poivre noir"]},{"order":7,"quantity":40,"unit":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"name":" de beurre doux"},{"order":8,"quantity":null,"unit":"","name":["Sel fin"]},{"order":9,"quantity":4,"unit":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"name":" de vinaigre de vin rouge"}]
     </script>
     <script async="async" src="//platform.getbring.com/widgets/import.js"></script>
     <style>
@@ -117,21 +117,21 @@
                 
                     <li><span class="highlight-quantity">2 </span> magrets de canard</li>
                 
-                    <li><span class="highlight-quantity">1 pincée</span>  de piment d'espellette</li>
+                    <li><span class="highlight-quantity">1 [object Object]</span>  de piment d'espellette</li>
                 
-                    <li><span class="highlight-quantity">4 cuil. à soupe</span>  de miel de montagne</li>
+                    <li><span class="highlight-quantity">4 [object Object]</span>  de miel de montagne</li>
                 
                     <li><span class="highlight-quantity">0.25 </span> citron jaune</li>
                 
-                    <li><span class="highlight-quantity">20 cl.</span>  de fond de veau</li>
+                    <li><span class="highlight-quantity">20 [object Object]</span>  de fond de veau</li>
                 
                     <li><span class="highlight-quantity">null </span> Poivre noir</li>
                 
-                    <li><span class="highlight-quantity">40 g.</span>  de beurre doux</li>
+                    <li><span class="highlight-quantity">40 [object Object]</span>  de beurre doux</li>
                 
                     <li><span class="highlight-quantity">null </span> Sel fin</li>
                 
-                    <li><span class="highlight-quantity">4 cuil. à soupe</span>  de vinaigre de vin rouge</li>
+                    <li><span class="highlight-quantity">4 [object Object]</span>  de vinaigre de vin rouge</li>
                 
             </ul>
         </div>
@@ -163,8 +163,8 @@
         </div>
     </div>
     <script>
-        // Récupérer les ingrédients depuis le script JSON
-        const originalIngredients = JSON.parse(document.getElementById("ingredients-data").textContent);
+        // Récupération des ingrédients pour la mise à jour
+        const originalIngredients = [{"quantite":2,"unite":null,"nom":"magrets de canard"},{"quantite":1,"unite":{"id":"selRl6lwc9mIa2cMF","name":"pincée","color":"cyanLight2"},"nom":" de piment d'espellette"},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de miel de montagne"},{"quantite":0.25,"unite":null,"nom":"citron jaune"},{"quantite":20,"unite":{"id":"selecwlJTr6SuWx3M","name":"cl.","color":"blueLight1"},"nom":" de fond de veau"},{"quantite":null,"unite":null,"nom":["Poivre noir"]},{"quantite":40,"unite":{"id":"selX1UFBTxge4qCde","name":"g.","color":"greenLight2"},"nom":" de beurre doux"},{"quantite":null,"unite":null,"nom":["Sel fin"]},{"quantite":4,"unite":{"id":"selto8y7TqftFH3VM","name":"cuil. à soupe","color":"yellowLight2"},"nom":" de vinaigre de vin rouge"}];
 
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
@@ -172,7 +172,7 @@
             if (currentValue + delta > 0) {
                 input.value = currentValue + delta;
 
-                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity
+                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
                 const bringContainer = document.getElementById("bring-import-container");
                 bringContainer.setAttribute("data-bring-base-quantity", input.value);
                 bringContainer.setAttribute("data-bring-requested-quantity", input.value);
@@ -182,31 +182,12 @@
                 ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
 
                 originalIngredients.forEach(ingredient => {
-                    let newQuantite = (ingredient.quantity * input.value / 6).toFixed(2);
-                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unit}</span> ${ingredient.name}</li>`; 
+                    // Calculer la nouvelle quantité
+                    let newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Arrondir à deux décimales
+                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
             }
         }
-
-        function replaceIngredientPlaceholders() {
-            const instructionsElements = document.querySelectorAll('.instructions');
-
-            instructionsElements.forEach(instructionElement => {
-                let instructionsHTML = instructionElement.innerHTML;
-
-                originalIngredients.forEach(ingredient => {
-                    const replacement = `${ingredient.quantity} ${ingredient.unit} ${ingredient.name}`;
-                    instructionsHTML = instructionsHTML.replace(new RegExp('\[undefined\]', 'g'), replacement);
-                });
-
-                instructionElement.innerHTML = instructionsHTML; 
-            });
-        }
-
-        // Écouter l'événement DOMContentLoaded pour remplacer les placeholders
-        document.addEventListener("DOMContentLoaded", () => {
-            replaceIngredientPlaceholders();
-        });
     </script>
 </body>
 </html>
