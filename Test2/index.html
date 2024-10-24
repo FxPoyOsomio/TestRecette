@@ -139,7 +139,7 @@
             
                 <div class="preparation">
                     <h3>Préparation des magrets</h3>
-                    <ul id="instruction-list" class="instructions">
+                    <ul class="instructions">
                         <li>Faire chauffer une poêle progressivement jusqu'à arriver à un feu fort.<br></li><li>Parer les <span class="highlight-quantity">2 </span> magrets de canard en enlevant l'excédant de gras autour du filet ainsi que les nerf et les membranes. Ensuite, retourner les magret coté gras et faire un quadrillage au couteau en veillant à ne pas entailler la chair. Le fait de parer le magret  permettra une cuisson plus uniforme.<br></li><li>Faire cuire pendant environ 5 minutes à feu moyen / fort les magrets sur le coté gras jusqu'à ce que ce dernier deviennent brun. Ensuite retourner les magrets pour colorer le côté chair pendant environ 15 à 30 secondes.<br></li><li>Laisser reposer les magrets 20 minutes sur une grille afin qu'ils se détendent.<br></li><li>Préchauffer le four à 210° en chaleur statique (pour ne pas dessécher la viande).<br></li>
                     </ul>
 
@@ -147,7 +147,7 @@
             
                 <div class="preparation">
                     <h3>Sauce au miel & thym</h3>
-                    <ul id="instruction-list" class="instructions">
+                    <ul class="instructions">
                         <li>Ajouter <span class="highlight-quantity">1 pincée</span>  de piment d'espellette dans une casserole sur un feu moyen / fort. Quand le miel commence à bouillir et à changer de couleur déglacer <span class="highlight-quantity">4 cuil. à soupe</span>  de miel de montagne et laisser réduire.<br></li><li>Quand le mélange a bien réduit et devient sirupeux, ajouter <span class="highlight-quantity">0.25 </span> citron jaune et assaisonner de <span class="highlight-quantity">20 cl.</span>  de fond de veau, de <span class="highlight-quantity">null </span> Poivre noir et de <span class="highlight-quantity">40 g.</span>  de beurre doux à convenance. Laisser réduire de nouveau de 1 tiers pour retrouver l'état sirupeux du mélange.<br></li><li>Retirer la casserole du feu pour monter la sauce au beurre. Ajouter <span class="highlight-quantity">null </span> Sel fin froid dans la sauce chaude et remuer à l'aide d'un fouet. Pour donner un peu plus de peps à la sauce, ajouter le jus de <span class="highlight-quantity">4 cuil. à soupe</span>  de vinaigre de vin rouge.<br></li>
                     </ul>
 
@@ -155,7 +155,7 @@
             
                 <div class="preparation">
                     <h3>Cuisson à coeur des magrets</h3>
-                    <ul id="instruction-list" class="instructions">
+                    <ul class="instructions">
                         <li>Enfourner 12 à 15 minutes les magret de canard disposés sur une grille au dessus d'un lèche fritte.<br></li><li>Trancher et servir immédiatement les magret de canard.<br></li>
                     </ul>
 
@@ -163,9 +163,8 @@
             
         </div>
     </div>
-   <script>
+    <script>
         // Récupération des ingrédients pour la mise à jour
-        
         const originalIngredients = [{"quantite":2,"unite":"","nom":"magrets de canard","order":"[1]"},{"quantite":1,"unite":"pincée","nom":" de piment d'espellette","order":"[5]"},{"quantite":4,"unite":"cuil. à soupe","nom":" de miel de montagne","order":"[2]"},{"quantite":0.25,"unite":"","nom":"citron jaune","order":"[9]"},{"quantite":20,"unite":"cl.","nom":" de fond de veau","order":"[4]"},{"quantite":null,"unite":"","nom":["Poivre noir"],"order":"[7]"},{"quantite":40,"unite":"g.","nom":" de beurre doux","order":"[8]"},{"quantite":null,"unite":"","nom":["Sel fin"],"order":"[6]"},{"quantite":4,"unite":"cuil. à soupe","nom":" de vinaigre de vin rouge","order":"[3]"}];
 
         function updatePortions(delta) {
@@ -179,12 +178,8 @@
                 bringContainer.setAttribute("data-bring-base-quantity", input.value);
                 bringContainer.setAttribute("data-bring-requested-quantity", input.value);
 
-                // Mettre à jour les quantités des ingrédients INGRÉDIENT
+                // Mettre à jour les quantités des ingrédients
                 const ingredientList = document.getElementById("ingredient-list");
-                ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
-
-                // Mettre à jour les quantités des ingrédients INSTRUCTION
-                const instructionList = document.getElementById("instruction-list");
                 ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
 
                 originalIngredients.forEach(ingredient => {
@@ -216,21 +211,6 @@
 
                     
                     ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
-
-                    instructionList.innerHTML += `<li>${etape.originalInstructions
-                                .replace(/
-/g, '<br>') // Remplacer les retours à la ligne par <br>
-                                .replace(/[(d+)]/g, (match, p1) => {
-                                    const index = parseInt(p1, 10) - 1; // Convertir p1 en nombre et ajuster l'index
-
-                                    // Vérifier si l'index est valide
-                                    if (index >= 0 && index < ingredientsDetailsForHTML.length) {
-                                        const ingredient = ingredientsDetailsForHTML[index]; // Récupérer l'ingrédient correspondant
-                                        return `<span class="highlight-quantity">${newQuantite} ${ingredient.unit}</span> ${ingredient.name}`; // Créer la chaîne HTML avec un id
-                                    }
-                                    return match; // Retourner la correspondance originale si l'index n'est pas valide
-                                })
-                            }</li>`
                 });
             }
         }
