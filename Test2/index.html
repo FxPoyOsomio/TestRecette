@@ -183,19 +183,14 @@
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
                     let newQuantite;
-                let newQuantite;
                     if (ingredient.quantite === null || ingredient.quantite === 0) {
                         newQuantite = ''; // Si quantité est null ou 0, la remplacer par une chaîne vide
                     } else {
-                        // Calculer la nouvelle quantité
-                        let calculatedQuantite = ingredient.quantite * input.value / 6;
-
-                        // Si le résultat est un entier, l'afficher comme un entier
-                        if (Number.isInteger(calculatedQuantite)) {
-                            newQuantite = calculatedQuantite;
+                        calculateNewQuantite = (ingredient.quantite * input.value / 6); // Sinon, calculer la nouvelle quantité
+                        if (Number.isInteger(calculateNewQuantite)) {
+                            newQuantite = calculateNewQuantite.toFixed(0);
                         } else {
-                            // Sinon, arrondir à un maximum de 3 décimales
-                            newQuantite = parseFloat(calculatedQuantite.toFixed(3));
+                            newQuantite = calculateNewQuantite.toFixed(3);
                         }
                     }
                     ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
