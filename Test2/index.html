@@ -183,7 +183,7 @@
 
                 // Mettre à jour les quantités des ingrédients
                 ingredientsDetailsForHTML.forEach(ingredient => {
-                    const ingredientId = `ingredient-${ingredient.order}`;
+                    const ingredientId = 'ingredient-'${ingredient.order};
                     const quantityElement = document.getElementById(ingredientId);
                     if (quantityElement) {
                         let newQuantite;
@@ -192,7 +192,7 @@
                         } else {
                             newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Calculer la nouvelle quantité
                         }
-                        quantityElement.innerHTML = ${newQuantite} ${ingredient.unit}; // Mettre à jour la quantité affichée
+                        quantityElement.innerHTML = `${newQuantite} ${ingredient.unit}`; // Mettre à jour la quantité affichée
                     }
                 });
 
