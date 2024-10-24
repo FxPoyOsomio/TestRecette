@@ -182,16 +182,16 @@
 
                 originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
-                    let newQuantite = (ingredient.quantite * input.value / ${nbPortions}).toFixed(2); // Arrondir à deux décimales
-                    
-                    // Ne pas afficher les ingrédients avec une quantité null ou égale à zéro
-                    if (newQuantite > 0 && ingredient.quantite !== null) {
-                        ingredientList.innerHTML += <li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>;
+                    let newQuantite;
+                    if (ingredient.quantite === null || ingredient.quantite === 0) {
+                        newQuantite = ''; // Si quantité est null ou 0, la remplacer par une chaîne vide
+                    } else {
+                        newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Sinon, calculer la nouvelle quantité
                     }
+                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
                 });
             }
         }
-
         function replaceIngredientPlaceholders() {
             const instructionsElements = document.querySelectorAll('.instructions');
 
