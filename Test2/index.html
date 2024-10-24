@@ -173,6 +173,9 @@
         function updatePortions(delta) {
             const input = document.getElementById("portion-input");
             let currentValue = parseInt(input.value, 10);
+            console.log("Update called with delta:", delta);
+            console.log("Current portion value:", currentValue);
+
             if (currentValue + delta > 0) {
                 input.value = currentValue + delta;
 
@@ -191,8 +194,10 @@
                     if (ingredient.quantite === null || ingredient.quantite === 0) {
                         newQuantite = ''; // Si quantité est null ou 0
                     } else {
-                        newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Calculer la nouvelle quantité
+                        newQuantite = (ingredient.quantite * input.value / nbPortions).toFixed(2); // Calculer la nouvelle quantité
                     }
+
+                    console.log(`Updating ingredient ${ingredientId} with new quantity: ${newQuantite}`);
 
                     // Mettre à jour la quantité dans la liste des ingrédients
                     if (quantityElement) {
@@ -210,13 +215,18 @@
                         if (ingredient.quantite === null || ingredient.quantite === 0) {
                             newQuantite = ''; // Si quantité est null ou 0
                         } else {
-                            newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Calculer la nouvelle quantité
+                            newQuantite = (ingredient.quantite * input.value / nbPortions).toFixed(2); // Calculer la nouvelle quantité
                         }
+                        console.log(`Updating instruction for ingredient order ${ingredientOrder} with new quantity: ${newQuantite}`);
+                        
                         element.innerHTML = `${newQuantite} ${ingredient.unit}`; // Mettre à jour la quantité affichée
                     }
                 });
+            } else {
+                console.log("Portion value cannot be less than 1");
             }
         }
+
 
 
 </script>
