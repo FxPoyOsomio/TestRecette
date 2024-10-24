@@ -241,13 +241,13 @@
                                         }
 
                                         // Retourner la chaîne HTML mise à jour avec la quantité
-                                        return `<span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}`; // Mettre à jour avec la quantité
+                                        return <span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}; // Mettre à jour avec la quantité
                                     }
                                     return match; // Retourner la correspondance originale si l'index n'est pas valide
                                 });
                             
                             // Ajouter la nouvelle instruction à la liste d'instructions
-                            instructionList.innerHTML += `<li>${newInstruction}</li>`;
+                            instructionList.innerHTML += <li>${newInstruction}</li>;
                         });
                     });
                 });
