@@ -176,47 +176,48 @@
             if (currentValue + delta > 0) {
                 input.value = currentValue + delta;
 
-                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity avec la nouvelle valeur
+                // Mettre à jour les attributs data-bring-base-quantity et data-bring-requested-quantity
                 const bringContainer = document.getElementById("bring-import-container");
                 bringContainer.setAttribute("data-bring-base-quantity", input.value);
                 bringContainer.setAttribute("data-bring-requested-quantity", input.value);
 
-                // Mettre à jour les quantités des ingrédients
-                const ingredientList = document.getElementById("ingredient-list");
-                ingredientList.innerHTML = ""; // Réinitialiser la liste des ingrédients
+                // Mettre à jour les quantités dans la liste des ingrédients
+                ingredientsDetailsForHTML.forEach(ingredient => {
+                    const ingredientId = `ingredient-'+'${ingredient.order}`;
+                    const quantityElement = document.getElementById(ingredientId);
+                    let newQuantite;
 
-                originalIngredients.forEach(ingredient => {
                     // Calculer la nouvelle quantité
-                let newQuantite;
-
-                if (ingredient.quantite === null || ingredient.quantite === 0) {
-                    newQuantite = ''; // Si quantité est null ou 0, la remplacer par une chaîne vide
-                } else {
-                    let calculateNewQuantite = (ingredient.quantite * input.value / 6); // Sinon, calculer la nouvelle quantité
-
-                    if (ingredient.unite === "kg." || ingredient.unite === "l.") {
-                        // Si l'unité est "kg." ou "l.", arrondir à 3 décimales ou garder l'entier
-                        newQuantite = Number.isInteger(calculateNewQuantite) ? calculateNewQuantite.toFixed(0) : calculateNewQuantite.toFixed(3);
-                        
-                    } else if (ingredient.unite === "g." || ingredient.unite === "ml.") {
-                        // Si l'unité est "g." ou "ml.", arrondir à 0 décimales
-                        newQuantite = calculateNewQuantite.toFixed(0);
-                        
-                    } else if (ingredient.unite === "cl.") {
-                        // Si l'unité est "cl.", arrondir à 1 décimale ou garder l'entier
-                        newQuantite = Number.isInteger(calculateNewQuantite) ? calculateNewQuantite.toFixed(0) : calculateNewQuantite.toFixed(1);
-                        
+                    if (ingredient.quantite === null || ingredient.quantite === 0) {
+                        newQuantite = ''; // Si quantité est null ou 0
                     } else {
-                        // Sinon, arrondir à 2 décimales ou garder l'entier
-                        newQuantite = Number.isInteger(calculateNewQuantite) ? calculateNewQuantite.toFixed(0) : calculateNewQuantite.toFixed(2);
+                        newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Calculer la nouvelle quantité
                     }
-                }
 
-                    
-                    ingredientList.innerHTML += `<li><span class="highlight-quantity">${newQuantite} ${ingredient.unite}</span> ${ingredient.nom}</li>`; // Utiliser les backticks ici
+                    // Mettre à jour la quantité dans la liste des ingrédients
+                    if (quantityElement) {
+                        quantityElement.innerHTML = `${newQuantite} ${ingredient.unit}`;
+                    }
+                });
+
+                // Mettre à jour les quantités dans les instructions
+                const instructionElements = document.querySelectorAll("#instruction-ingredient .highlight-quantity");
+                instructionElements.forEach(element => {
+                    const ingredientOrder = element.id.split('-')[1]; // Extraire l'ordre de l'ID
+                    const ingredient = ingredientsDetailsForHTML.find(ing => ing.order == ingredientOrder);
+                    if (ingredient) {
+                        let newQuantite;
+                        if (ingredient.quantite === null || ingredient.quantite === 0) {
+                            newQuantite = ''; // Si quantité est null ou 0
+                        } else {
+                            newQuantite = (ingredient.quantite * input.value / 6).toFixed(2); // Calculer la nouvelle quantité
+                        }
+                        element.innerHTML = `${newQuantite} ${ingredient.unit}`; // Mettre à jour la quantité affichée
+                    }
                 });
             }
         }
+
 
 </script>
 </body>
